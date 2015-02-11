@@ -13,9 +13,10 @@ input, select, textarea {
     margin: 0.35em 0.5em;
 }
 
-div.panel {
+.panel {
     padding: 1em;
     background-color: #eee;
+    margin: 1em;
 }
 
 button, input[type="submit"] {
@@ -27,4 +28,20 @@ button:hover, input[type="submit"]:hover {
     color: white;
     transition: all 150ms ease;
     cursor: pointer;
+}
+
+.contact-container {
+    padding: 0.5em;
+    margin: 0.5em;
+    border-bottom: 1px solid gray;
+}
+
+.contact-name {
+    display: inline-block;
+    padding: 1em;
+}
+
+.contact-location {
+    color: #777;
+    font-size: 0.95em;
 }
