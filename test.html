@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+
+        var jsonObject = {
+            name: 'Jahara Pagadipala',
+            location: 'Sunnyvale'
+        };
+
+        function convertJSONtoFormURlEncoded(obj) {
+            // write code here
+            var pairs = [];
+            for (var prop in obj) {
+                pairs.push(
+                        encodeURIComponent(prop) + '=' + encodeURIComponent(obj[prop])
+                )
+            }
+            return pairs.join('&');
+        }
+
+        function decode(str) {
+            var rbase = /[^&]+/gmi;
+            return str.match(rbase).reduce(function (o, m) {
+                var pair = /(.+)=(.+)/g.exec(m).slice(1,3).map(decodeURIComponent);
+                o[pair[0]] = pair[1];
+                return o;
+            }, {});
+
+        }
+
+
+        var str = convertJSONtoFormURlEncoded(jsonObject);
+        console.log(str);
+        var obj = decode(str);
+        console.log(obj);
+    </script>
+</head>
+<body>
+<form method="post">
+    <input type="text" name="name"/>
+    <input type="text" name="location"/>
+    <input type="submit" value="Add Contact"/>
+</form>
+</body>
+</html>
