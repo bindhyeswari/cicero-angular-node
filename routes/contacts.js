@@ -26,6 +26,18 @@ router.route('/')
 
     });
 
+router.delete('/:id', function (req, res) {
+    // write code to remove element from the array
+    for (var i = 0, len = contacts.length; i < len; i++) {
+        if (contacts[i]._id === req.params.id) {
+            contacts.splice(i, 1);
+            res.status(200).json({ message: 'deleted resource' });
+            return;
+        }
+    }
+    res.status(400).json({ message: 'The specified resource does not exist!' });
+});
+
 router.get('/nonangular', function (req, res) {
     res.render('nonangular');
 });

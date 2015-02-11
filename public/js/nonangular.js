@@ -57,6 +57,24 @@ function addContactToView(contacts_container, contact) {
     contact_div.dataset.id = contact._id;
     createElement('span', contact_div, contact.name, 'contact-name');
     createElement('span', contact_div, contact.location, 'contact-name');
+    createElement('span', contact_div, 'X', 'contact-delete').addEventListener('click', function () {
+        var id = this.parentNode.dataset.id;
+        var contact_div = this.parentNode;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('DELETE', '/contacts/' + id);
+        xhr.setRequestHeader('accept', 'application/json');
+        xhr.addEventListener('readystatechange', function () {
+            if( xhr.readyState === 4 && xhr.status === 200 ) {
+                var obj = JSON.parse(xhr.responseText);
+                console.log(obj);
+
+                // delete contact div from view
+                contact_div.parentNode.removeChild(contact_div);
+            }
+        });
+        xhr.send();
+    });
 }
 
 function createElement(type, parent, innerHTML, className) {
