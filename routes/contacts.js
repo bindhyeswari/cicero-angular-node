@@ -4,6 +4,7 @@ var contacts = [ {name: 'Christina', location: 'Sunnyvale'}, { name: 'Wei', loca
 
 /* This route works with the path /contacts */
 
+
 router.route('/')
 .get(function(req, res) {
         res.status(200).json(contacts);
@@ -23,9 +24,11 @@ router.route('/')
 
     });
 
-
 router.get('/nonangular', function (req, res) {
     res.render('nonangular');
 });
+
+
+
 
 module.exports = router;
