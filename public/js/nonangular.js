@@ -54,6 +54,7 @@ function updateAllContactsView() {
 
 function addContactToView(contacts_container, contact) {
     var contact_div = createElement('div', contacts_container, '', 'contact-container');
+    contact_div.dataset.id = contact._id;
     createElement('span', contact_div, contact.name, 'contact-name');
     createElement('span', contact_div, contact.location, 'contact-name');
 }

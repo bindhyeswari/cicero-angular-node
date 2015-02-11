@@ -1,6 +1,7 @@
 var router = require('express').Router();
+var uuid = require('node-uuid');
 
-var contacts = [ {name: 'Christina', location: 'Sunnyvale'}, { name: 'Wei', location: 'Sunnyvale' }];
+var contacts = [ {name: 'Christina', location: 'Sunnyvale', _id: uuid.v4()}, { name: 'Wei', location: 'Sunnyvale', _id: uuid.v4() }];
 
 /* This route works with the path /contacts */
 
@@ -13,9 +14,10 @@ router.route('/')
         console.log('Data sent from the front end: ');
         console.log(req.body);
 
+        req.body._id = uuid.v4();
         contacts.push(req.body);
 
-        res.status(201).json({ message: 'Added contact' })
+        res.status(201).json(req.body);
     })
 .put(function (req, res) {
 
